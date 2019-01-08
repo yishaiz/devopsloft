@@ -1,0 +1,27 @@
+#user base : ubuntu
+FROM ubuntu:18.04
+
+EXPOSE 3306
+
+ENV MYSQL_ROOT_PASSWORD 12345
+
+RUN apt-get update -y && \
+    apt-get install -y mysql-server 
+# && \
+# useradd -ms /bin/bash devopsloft 
+
+WORKDIR /app
+
+COPY ./create_db.sql /app/create_db.sql 
+
+#work also without :
+#RUN	chmod 644 /app/create_db.sql 
+
+# USER devopsloft
+
+RUN /etc/init.d/mysql start && \
+    mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "CREATE DATABASE test_db" && \
+    mysql -u root -p${MYSQL_ROOT_PASSWORD} < /app/create_db.sql && \
+    rm -rd /app/
+
+CMD ["mysqld"]
