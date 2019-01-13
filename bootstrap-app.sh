@@ -17,25 +17,25 @@ pip3 install --upgrade pip
 # echo "Installing mysql-connector-python..."
 # pip3 install mysql-connector-python
 
-echo "Installing virtualenv..."
-pip install virtualenv
+# echo "Installing virtualenv..."
+# pip install virtualenv
 
-echo "Setting virtual environment..."
-virtualenv -p python3 venv
-source venv/bin/activate
+# echo "Setting virtual environment..."
+# virtualenv -p python3 venv
+# source venv/bin/activate
 
-uname -r | grep aws
-if [ $? -eq 0 ]; then
-	echo 'aws'
-	cd devopsloft
-else
-	echo 'not aws'
-	cd /vagrant
-fi
+# uname -r | grep aws
+# if [ $? -eq 0 ]; then
+# 	echo 'aws'
+# 	cd devopsloft
+# else
+# 	echo 'not aws'
+# 	cd /vagrant
+# fi
 
-echo "Installing additional pips from requirements.txt..."
-pip install -r requirements.txt
+# echo "Installing additional pips from requirements.txt..."
+# pip install -r requirements.txt
 
-nohup python3 application.py > /dev/null 2>&1 &
+# nohup python3 application.py > /dev/null 2>&1 &
 
-echo "application boostrap script completed!"
+# echo "application boostrap script completed!"

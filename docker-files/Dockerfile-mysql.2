@@ -1,0 +1,12 @@
+#user base : mysql 
+FROM mysql:5.6
+
+EXPOSE 3306
+
+ENV MYSQL_ROOT_PASSWORD 12345
+
+ADD ./create_db.sql /docker-entrypoint-initdb.d
+
+RUN /etc/init.d/mysql start 
+
+CMD ["mysqld"]
