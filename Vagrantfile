@@ -23,22 +23,23 @@ Vagrant.configure("2") do |config|
 		end
 	end
 
+
 	config.vm.define "stage" do |stage|
 
 		stage.vm.box = "dummy"
 		stage.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
 
 		stage.vm.provider :aws do |aws,override|
-			aws.keypair_name = "osx_rsa"
+			aws.keypair_name = "aws_ireland_devopsloft_stage"
 			aws.ami = "ami-d2414e38"
 			aws.instance_type = "t2.micro"
 			aws.region = "eu-west-1"
-			aws.subnet_id = "subnet-2c67fe64"
-			aws.security_groups = ["sg-7b78fe07"]
+			aws.subnet_id = "subnet-571e7e31"
+			aws.security_groups = ["sg-04e9123dc79802b22"]
 			aws.associate_public_ip = true
 
 			override.ssh.username = "ubuntu"
-			override.ssh.private_key_path = "~/.ssh/osx_rsa.pem"
+			override.ssh.private_key_path = "~/.ssh/aws_ireland_devopsloft_stage.pem"
 		end
 
 	end
